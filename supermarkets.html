@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Supermarkets - Street2Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004d40;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .nav-top-right {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .nav-top-right a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .location-section {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .location-section input {
+      padding: 0.5rem;
+      width: 250px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .location-section button {
+      padding: 0.5rem 1rem;
+      background-color: #00695c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .supermarkets-list {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .supermarket-card {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      width: 90%;
+      max-width: 550px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .supermarket-card h3 {
+      color: #00695c;
+      margin-bottom: 1rem;
+    }
+
+    .visit-btn {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 0.5rem 1rem;
+      background-color: #00695c;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: green;
+      margin: 0 10px;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #004d40;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Supermarkets</h1>
+    <div class="nav-top-right">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </div>
+  </header>
+
+  <section class="location-section">
+    <h2>Enter your Location</h2>
+    <input type="text" id="locationInput" placeholder="Enter area...">
+    <button onclick="checkLocation()">Submit</button>
+  </section>
+
+  <section id="supermarketsList" class="supermarkets-list">
+
+    <div class="supermarket-card">
+      <h3>D-Mart</h3>
+      <a class="visit-btn" href="https://www.dmart.in/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/dmart.india/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/dmart.india/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>Nilgiris</h3>
+      <a class="visit-btn" href="https://www.nilgiris1905.com/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Nilgiris1905/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>More Supermarket</h3>
+      <a class="visit-btn" href="https://www.moreretail.in/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/moresupermarket/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/moreretail.in/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>Spencer’s</h3>
+      <a class="visit-btn" href="https://www.spencers.in/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/spencers_retail/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/spencersretail/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>JioMart</h3>
+      <a class="visit-btn" href="https://www.jiomart.com/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/jiomart/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/JioMart/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>Metro Wholesale</h3>
+      <a class="visit-btn" href="https://www.metro.co.in/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/metrocashandcarryindia/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/MetroIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>Heritage Fresh</h3>
+      <a class="visit-btn" href="https://www.heritagefoods.in/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/heritagefoodsindia" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>Kannan Departmental Store</h3>
+      <a class="visit-btn" href="https://kannanretail.com/" target="_blank">Visit Store</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/kannandepartmentalstores/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/kannandepartmentalstores/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="supermarket-card">
+      <h3>FreshLine Supermarket</h3>
+      <a class="visit-btn" href="https://www.instagram.com/freshline_supermarket/" target="_blank">Visit Instagram</a>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/freshline_supermarket/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/freshlinechennai/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Street2Store</p>
+  </footer>
+
+  <script>
+    function checkLocation() {
+      const input = document.getElementById("locationInput").value.trim().toLowerCase();
+      if (input === "chennai") {
+        document.getElementById("supermarketsList").style.display = "flex";
+      } else {
+        alert("Currently, we support only Chennai supermarkets.");
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+

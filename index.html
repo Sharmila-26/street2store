@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Street2Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f8ff; /* Light pastel blue */
+      color: #333; /* Default text */
+    }
+
+    header {
+      background: #0f172a; /* Dark navy */
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #60a5fa; /* Light sky blue */
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #e0f2fe, #bae6fd); /* Sky blue gradient */
+      color: #333;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft modern shadow */
+    }
+
+    .hero h2 {
+      font-size: 2em;
+      color: #0f172a;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #64748b; /* Slate gray */
+      margin-bottom: 20px;
+    }
+
+    .button {
+      background: #1e3a8a; /* Navy */
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #0f172a;
+      color: white;
+      margin-top: 50px;
+    }
+
+    #voice-assistant {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0f172a;
+      padding: 15px;
+      border-radius: 15px;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+    }
+
+    #voice-assistant button {
+      background-color: #00d9ff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #transcript {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Street2Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="supermarkets.html">Supermarkets</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Connect Street Vendors with Wholesale Suppliers</h2>
+    <p>Find supermarkets and wholesale stores near you. Get the best deals and streamline your supply chain.</p>
+    <a href="supermarkets.html" class="button">Explore Supermarkets</a>
+  </section>
+
+
+
+<!-- Replace your current #voice-assistant -->
+<div id="voice-assistant">
+  
+  <button onclick="startVoiceAssistant()">🎤 Ask Guide</button>
+  <p id="transcript">Click and ask your question</p>
+</div>
+
+
+
+
+  <footer>
+    <p>&copy; 2025 Street2Store</p>
+  </footer>
+
+  <script>
+    window.onload = function () {
+      const welcomeText = "Welcome to Street2Store. I am your assistant. You can ask me anything like how to register, how to log in, or contact details. Click the mic button to begin.";
+      const synth = window.speechSynthesis;
+      const utter = new SpeechSynthesisUtterance(welcomeText);
+      synth.speak(utter);
+    }
+
+    function startVoiceAssistant() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.start();
+
+      recognition.onresult = function (event) {
+        const msg = event.results[0][0].transcript.toLowerCase();
+        document.getElementById("transcript").innerText = "You said: " + msg;
+        replyTo(msg);
+      };
+
+      recognition.onerror = function (event) {
+        document.getElementById("transcript").innerText = "Error: " + event.error;
+      };
+    }
+
+    function replyTo(msg) {
+      let response = "Sorry, I didn't get that. Try saying 'register', 'login', or 'contact info'.";
+
+      if (msg.includes("register")) {
+        response = "To register, click the Register button at the top and fill the form.";
+      } else if (msg.includes("login")) {
+        response = "Click the Login option in the menu and enter your username and password.";
+      } else if (msg.includes("contact")) {
+        response = "You can contact us using the Contact page or call +91 98765 43210.";
+      } else if (msg.includes("products") || msg.includes("goods")) {
+        response = "We offer verified goods from top wholesale supermarkets.";
+      } else if (msg.includes("about")) {
+        response = "Street2Store helps vendors connect directly with wholesale suppliers.";
+      } else if (msg.includes("help")) {
+        response = "You can ask me anything like 'how to register', 'what is this site', or 'contact number'.";
+      }
+
+      const synth = window.speechSynthesis;
+      const utter = new SpeechSynthesisUtterance(response);
+      synth.speak(utter);
+
+      document.getElementById("transcript").innerText += "\nAssistant: " + response;
+    }
+  </script>
+
+</body>
+</html>
